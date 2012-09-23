@@ -6,7 +6,7 @@
 #include <sys/netmgr.h>
 #include <errno.h>
 
-const int BUFFER_LENGTH = 20;
+const int BUFFER_LENGTH = 30;
 
 int main(int argc, char *argv[]) {
 	pid_t pid_2 = getpid();
@@ -15,7 +15,6 @@ int main(int argc, char *argv[]) {
 	char *rmsg = (char*)malloc(BUFFER_LENGTH*sizeof(char));
 	printf(" P2>\n");
 	printf(" P2> Parent pid: %i\n", pid_1);
-	printf(" P2> %s\n", argv[0]);
 	int chidP1 = atoi(argv[0]);
 
 	// Step 3 Creating channel - chidP2.

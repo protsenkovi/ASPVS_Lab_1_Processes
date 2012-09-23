@@ -6,7 +6,7 @@
 #include <sys/neutrino.h>
 #include <sys/netmgr.h>
 
-const int BUFFER_LENGTH = 20;
+const int BUFFER_LENGTH = 30;
 
 int main(int argc, char *argv[]) {
 	pid_t pid_1 = getpid();

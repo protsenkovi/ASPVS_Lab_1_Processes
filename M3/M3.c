@@ -6,7 +6,7 @@
 #include <sys/netmgr.h>
 #include <errno.h>
 
-const int BUFFER_LENGTH = 20;
+const int BUFFER_LENGTH = 30;
 
 int main(int argc, char *argv[]) {
 	pid_t pid_3 = getpid();
@@ -63,11 +63,11 @@ int main(int argc, char *argv[]) {
 	printf("P3> Server replied \n");
 
 	// Step 17 Receiving message from P1. Reply.
-	int rcvid = MsgReceive(chidP3, msg, sizeof(msg), NULL);
+	int rcvid = MsgReceive(chidP3, msg, BUFFER_LENGTH, NULL);
 	printf("  P3> Received, rcvid: %i\n", rcvid);
 	printf("  P3> Message: %s\n", msg);
 	strcpy(msg, "P3 OK");
-	MsgReply(rcvid, EOK, msg, strlen(msg) + 1);
+	MsgReply(rcvid, EOK, msg, strlen(msg)+1);
 
 	printf("  P3> Have a nice day!\n");
 	return EXIT_SUCCESS;
