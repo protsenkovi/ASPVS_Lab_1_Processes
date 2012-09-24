@@ -25,10 +25,10 @@ int main(int argc, char *argv[]) {
 	printf("P1> Spawned new process. res: %i\n", pid_2);
 
 	// Step 6 Receiving channel id of P2 process - chidP2.
-	int rcvid = MsgReceive(chidP1, msg, sizeof(msg), NULL);
+	int rcvid = MsgReceive(chidP1, msg, sizeof(int), NULL);
 	printf("P1> Received, rcvid: %i\n", rcvid);
 	printf("P1> Message: %s\n", msg);
-	int chidP2 = atoi(msg);
+	int chidP2 = *(int*)((int)msg);
 
 	// Step 7 Reply to P2 process.
 	strcpy(msg, "P1 received chidP2");

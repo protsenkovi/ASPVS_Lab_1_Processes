@@ -28,13 +28,12 @@ int main(int argc, char *argv[]) {
 
 	// Step 6 Sending chidP2 to P1.
 	int coid_1 = ConnectAttach(ND_LOCAL_NODE, pid_1, chidP1, _NTO_SIDE_CHANNEL, 0);
-		if (coid_1==-1) {
-			fprintf(stderr, "Connection error.\n");
-			exit(EXIT_FAILURE);
-		}
+	if (coid_1==-1) {
+		fprintf(stderr, "Connection error.\n");
+		exit(EXIT_FAILURE);
+	}
 	printf(" P2> P2 coid: %i\n", coid_1);
-	sprintf(msg, "%i", chidP2);
-	int msg_res = MsgSend(coid_1, msg, strlen(msg) + 1, rmsg, BUFFER_LENGTH*sizeof(char)); //sizeof(bytes)
+	int msg_res = MsgSend(coid_1, &chidP2, sizeof(int), rmsg, BUFFER_LENGTH*sizeof(char)); //sizeof(bytes)
 	if (msg_res < 0) {
 		msg_res = errno;
 		fprintf(stderr, " P2> Error MsgSend\n");
